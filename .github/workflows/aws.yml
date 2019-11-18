@@ -74,7 +74,7 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
-      uses: ./.github/actions/deploy-ecs
+      uses: clareliguori/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sample-app-service
