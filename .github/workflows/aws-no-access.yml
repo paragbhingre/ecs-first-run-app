@@ -22,7 +22,7 @@ jobs:
         aws-region: us-east-2
 
     - name: Deploy Amazon ECS task definition
-      uses: clareliguori/amazon-ecs-deploy-task-definition@master
+      uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: task-definition.json
         service: sample-app-service
