@@ -5,6 +5,11 @@ const yaml = require('yaml');
 const fs = require('fs');
 const crypto = require('crypto');
 
+const CODE_DEPLOY_WAIT_BUFFER_MINUTES = 10;
+const CODE_DEPLOY_MAX_WAIT_MINUTES = 360;  // 6 hours
+const CODE_DEPLOY_MIN_WAIT_MINUTES = 30;
+const CODE_DEPLOY_WAIT_DEFAULT_DELAY_SEC = 15;
+
 // Deploy to a service that uses the 'ECS' deployment controller
 async function updateEcsService(ecs, clusterName, service, taskDefArn, waitForService) {
   core.debug('Updating the service');
@@ -60,6 +65,12 @@ async function createCodeDeployDeployment(codedeploy, clusterName, service, task
   let codeDeployGroup = core.getInput('codedeploy-deployment-group', { required: false });
   codeDeployGroup = codeDeployGroup ? codeDeployGroup : `DgpECS-${clusterName}-${service}`;
 
+  let deploymentGroupDetails = await codedeploy.getDeploymentGroup({
+    applicationName: codeDeployApp,
+    deploymentGroupName: codeDeployGroup
+  }).promise();
+  deploymentGroupDetails = deploymentGroupDetails.deploymentGroupInfo;
+
   // Insert the task def ARN into the appspec file
   const appSpecPath = path.isAbsolute(codeDeployAppSpecFile) ?
     codeDeployAppSpecFile :
@@ -96,9 +107,25 @@ async function createCodeDeployDeployment(codedeploy, clusterName, service, task
 
   // Wait for deployment to complete
   if (waitForService && waitForService.toLowerCase() === 'true') {
-    core.debug('Waiting for the deployment to complete');
+    // Determine wait time
+    const deployReadyWaitMin = deploymentGroupDetails.blueGreenDeploymentConfiguration.deploymentReadyOption.waitTimeInMinutes;
+    const terminationWaitMin = deploymentGroupDetails.blueGreenDeploymentConfiguration.terminateBlueInstancesOnDeploymentSuccess.terminationWaitTimeInMinutes;
+    let totalWaitMin = deployReadyWaitMin + terminationWaitMin + CODE_DEPLOY_WAIT_BUFFER_MINUTES;
+    if (totalWaitMin > CODE_DEPLOY_MAX_WAIT_MINUTES) {
+      totalWaitMin = CODE_DEPLOY_MAX_WAIT_MINUTES;
+    }
+    if (totalWaitMin < CODE_DEPLOY_MIN_WAIT_MINUTES) {
+      totalWaitMin = CODE_DEPLOY_MIN_WAIT_MINUTES;
+    }
+    const maxAttempts = (totalWaitMin * 60) / CODE_DEPLOY_WAIT_DEFAULT_DELAY_SEC;
+
+    core.debug(`Waiting for the deployment to complete. Will wait for ${totalWaitMin} minutes`);
     await codedeploy.waitFor('deploymentSuccessful', {
-      deploymentId: createDeployResponse.deploymentId
+      deploymentId: createDeployResponse.deploymentId,
+      $waiter: {
+        delay: CODE_DEPLOY_WAIT_DEFAULT_DELAY_SEC,
+        maxAttempts: maxAttempts
+      }
     }).promise();
   } else {
     core.debug('Not waiting for the deployment to complete');
