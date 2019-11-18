@@ -11,6 +11,7 @@ const mockEcsUpdateService = jest.fn();
 const mockEcsDescribeServices = jest.fn();
 const mockEcsWaiter = jest.fn();
 const mockCodeDeployCreateDeployment = jest.fn();
+const mockCodeDeployGetDeploymentGroup = jest.fn();
 const mockCodeDeployWaiter = jest.fn();
 jest.mock('aws-sdk', () => {
     return {
@@ -22,6 +23,7 @@ jest.mock('aws-sdk', () => {
         })),
         CodeDeploy: jest.fn(() => ({
             createDeployment: mockCodeDeployCreateDeployment,
+            getDeploymentGroup: mockCodeDeployGetDeploymentGroup,
             waitFor: mockCodeDeployWaiter
         }))
     };
@@ -105,6 +107,25 @@ describe('Deploy to ECS', () => {
             return {
                 promise() {
                     return Promise.resolve({ deploymentId: 'deployment-1' });
+                }
+            };
+        });
+
+        mockCodeDeployGetDeploymentGroup.mockImplementation(() => {
+            return {
+                promise() {
+                    return Promise.resolve({
+                        deploymentGroupInfo: {
+                            blueGreenDeploymentConfiguration: {
+                                deploymentReadyOption: {
+                                    waitTimeInMinutes: 60
+                                },
+                                terminateBlueInstancesOnDeploymentSuccess: {
+                                    terminationWaitTimeInMinutes: 30
+                                }
+                            }
+                        }
+                    });
                 }
             };
         });
@@ -195,7 +216,11 @@ describe('Deploy to ECS', () => {
         });
 
         expect(mockCodeDeployWaiter).toHaveBeenNthCalledWith(1, 'deploymentSuccessful', {
-            deploymentId: 'deployment-1'
+            deploymentId: 'deployment-1',
+            $waiter: {
+                delay: 15,
+                maxAttempts: 400
+            }
         });
 
         expect(mockEcsUpdateService).toHaveBeenCalledTimes(0);
