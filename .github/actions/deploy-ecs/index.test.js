@@ -150,7 +150,9 @@ describe('Deploy to ECS', () => {
                         failures: [],
                         services: [{
                             status: 'ACTIVE',
-                            deploymentController: 'CODE_DEPLOY'
+                            deploymentController: {
+                                type: 'CODE_DEPLOY'
+                            }
                         }]
                     });
                 }
@@ -269,7 +271,9 @@ describe('Deploy to ECS', () => {
                         failures: [],
                         services: [{
                             status: 'ACTIVE',
-                            deploymentController: 'CODE_DEPLOY'
+                            deploymentController: {
+                                type: 'CODE_DEPLOY'
+                            }
                         }]
                     });
                 }
@@ -409,7 +413,9 @@ describe('Deploy to ECS', () => {
                         failures: [],
                         services: [{
                             status: 'ACTIVE',
-                            deploymentController: 'CODE_DEPLOY'
+                            deploymentController: {
+                                type: 'CODE_DEPLOY'
+                            }
                         }]
                     });
                 }
@@ -469,7 +475,9 @@ describe('Deploy to ECS', () => {
                         failures: [],
                         services: [{
                             status: 'ACTIVE',
-                            deploymentController: 'EXTERNAL'
+                            deploymentController: {
+                                type: 'EXTERNAL'
+                            }
                         }]
                     });
                 }
