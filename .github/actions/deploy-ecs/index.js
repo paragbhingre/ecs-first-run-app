@@ -154,11 +154,11 @@ async function run() {
       if (!serviceResponse.deploymentController) {
         // Service uses the 'ECS' deployment controller, so we can call UpdateService
         await updateEcsService(ecs, clusterName, service, taskDefArn, waitForService);
-      } else if (serviceResponse.deploymentController == 'CODE_DEPLOY') {
+      } else if (serviceResponse.deploymentController.type == 'CODE_DEPLOY') {
         // Service uses CodeDeploy, so we should start a CodeDeploy deployment
         await createCodeDeployDeployment(codedeploy, clusterName, service, taskDefArn, waitForService);
       } else {
-        throw new Error(`Unsupported deployment controller: ${serviceResponse.deploymentController}`);
+        throw new Error(`Unsupported deployment controller: ${serviceResponse.deploymentController.type}`);
       }
     } else {
       core.debug('Service was not specified, no service updated');
