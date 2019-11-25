@@ -48,7 +48,7 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition with CodeDeploy
-      uses: clareliguori/amazon-ecs-deploy-task-definition@fix-nulls
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sample-app-codedeploy-service
