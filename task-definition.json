@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::131296546870:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::910995322324:role/SpinnakerManaged",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
