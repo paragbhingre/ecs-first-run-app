@@ -79,6 +79,6 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sample-app-service
-        cluster: default
+        cluster: spinnaker-deployment-cluster
         force-new-deployment: true
         wait-for-service-stability: true
