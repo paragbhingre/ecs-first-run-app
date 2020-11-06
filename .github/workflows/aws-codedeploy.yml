@@ -52,6 +52,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: sample-app-codedeploy-service
+        service: aws2-prod-ecsdemo-v001
         cluster: spinnaker-deployment-cluster
         wait-for-service-stability: true
