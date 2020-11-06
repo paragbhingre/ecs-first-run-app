@@ -79,4 +79,5 @@ jobs:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sample-app-service
         cluster: default
+        force-new-deployment: true
         wait-for-service-stability: true
