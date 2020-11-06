@@ -53,5 +53,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sample-app-codedeploy-service
-        cluster: default
+        cluster: spinnaker-deployment-cluster
         wait-for-service-stability: true
