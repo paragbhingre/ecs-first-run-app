@@ -75,7 +75,7 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
-      uses: paragbhingre/amazon-ecs-deploy-task-definition@master
+      uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssue
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: aws2-prod-ecsdemo-v001
