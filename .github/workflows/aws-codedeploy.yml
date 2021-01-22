@@ -52,6 +52,6 @@ jobs:
       uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssue
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: aws2-prod-ecsdemo-v001
+        service: aws-prod-ecsdemo-v002
         cluster: spinnaker-deployment-cluster
         wait-for-service-stability: true
