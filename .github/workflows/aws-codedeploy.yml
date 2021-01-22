@@ -49,7 +49,7 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition with CodeDeploy
-      uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssue
+      uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssueFinal
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: aws-prod-ecsdemo-v002
