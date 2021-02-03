@@ -61,6 +61,17 @@
       "name": "main"
     }
   ],
+  "placementConstraints": [],
+  "memory": "512",
+  "taskRoleArn": null,
+  "family": "first-run-task-definition",
+  "pidMode": null,
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "inferenceAccelerators": null,
   "proxyConfiguration": {
     "type": "APPMESH",
     "containerName": "envoy",
