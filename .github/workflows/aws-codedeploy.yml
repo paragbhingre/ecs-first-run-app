@@ -52,6 +52,6 @@ jobs:
       uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssueFinal
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: aws-prod-ecsdemo-v006
+        service: aws-prod-appmesh
         cluster: example-app-test-Cluster-NSnYsTXmCfV2
         wait-for-service-stability: true
