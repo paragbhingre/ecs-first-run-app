@@ -44,11 +44,14 @@
       "image": "httpd:2.4",
       "startTimeout": null,
       "firelensConfiguration": null,
-      "dependsOn": null,
+      "essential": true,
+      "dependsOn": [{
+        "containerName": "envoy",
+        "condition": "HEALTHY"
+      }],
       "disableNetworking": null,
       "interactive": null,
       "healthCheck": null,
-      "essential": true,
       "links": [],
       "hostname": null,
       "extraHosts": null,
