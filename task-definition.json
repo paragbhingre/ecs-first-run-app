@@ -74,7 +74,7 @@
   "inferenceAccelerators": null,
   "proxyConfiguration": {
     "type": "APPMESH",
-    "containerName": "v006",
+    "containerName": "envoy",
     "properties": [{
       "name": "IgnoredUID",
       "value": "1337"
