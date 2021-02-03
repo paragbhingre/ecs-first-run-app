@@ -53,5 +53,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: aws-prod-ecsdemo-v006
-        cluster: spinnaker-deployment-cluster
+        cluster: example-app-test-Cluster-NSnYsTXmCfV2
         wait-for-service-stability: true
