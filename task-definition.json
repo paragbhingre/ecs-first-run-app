@@ -72,6 +72,34 @@
   "networkMode": "awsvpc",
   "cpu": "256",
   "inferenceAccelerators": null,
-  "proxyConfiguration": null,
+  "proxyConfiguration": {
+    "type": "APPMESH",
+    "containerName": "envoy",
+    "properties": [{
+      "name": "IgnoredUID",
+      "value": "1337"
+    },
+      {
+        "name": "ProxyIngressPort",
+        "value": "15000"
+      },
+      {
+        "name": "ProxyEgressPort",
+        "value": "15001"
+      },
+      {
+        "name": "AppPorts",
+        "value": "80"
+      },
+      {
+        "name": "EgressIgnoredIPs",
+        "value": "169.254.170.2,169.254.169.254"
+      },
+      {
+        "name": "EgressIgnoredPorts",
+        "value": "22"
+      }
+    ]
+  },
   "volumes": []
 }
