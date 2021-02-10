@@ -4,6 +4,7 @@
   "containerDefinitions": [
     {
       "name": "main",
+      "image": "",
       "portMappings": [
         {
           "containerPort": 80,
