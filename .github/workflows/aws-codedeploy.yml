@@ -46,7 +46,7 @@ jobs:
       with:
         task-definition: task-definition.json
         container-name: main
-        image: ${{ steps.build-image.outputs.image }}
+        image:
 
     - name: Deploy Amazon ECS task definition with CodeDeploy
       uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssueFinal
