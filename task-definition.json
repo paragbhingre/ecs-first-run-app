@@ -65,6 +65,7 @@
     },
     {
       "name" : "envoy",
+      "image" : "840364872350.dkr.ecr.us-west-2.amazonaws.com/aws-appmesh-envoy:v1.16.1.0-prod",
       "essential" : true,
       "environment" : [
         {
