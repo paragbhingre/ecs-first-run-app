@@ -102,8 +102,8 @@
     "type": "APPMESH",
     "containerName": "envoy",
     "properties": [{
-      "name": "IgnoredUID",
-      "value": "1337"
+      "name": "",
+      "value": ""
     }
     ]
   },
