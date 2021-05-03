@@ -1,5 +1,6 @@
 {
   "ipcMode": null,
+  "IgnoredUID": 1337,
   "executionRoleArn": "arn:aws:iam::910995322324:role/SpinnakerManaged",
   "containerDefinitions": [
     {
