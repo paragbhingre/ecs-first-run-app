@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - master
-      - ecs-first-run-app
+      - ecs-first-run-app2
 
 name: Deploy to Amazon ECS with CodeDeploy
 
