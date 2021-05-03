@@ -104,31 +104,7 @@
     "properties": [{
       "name": "ProxyIngressPort",
       "value": "15000"
-    },
-      {
-        "name": "AppPorts",
-        "value": "1234"
-      },
-      {
-        "name": "EgressIgnoredIPs",
-        "value": "169.254.170.2,169.254.169.254"
-      },
-      {
-        "name": "IgnoredGID",
-        "value": ""
-      },
-      {
-        "name": "EgressIgnoredPorts",
-        "value": ""
-      },
-      {
-        "name": "IgnoredUID",
-        "value": "1337"
-      },
-      {
-        "name": "ProxyEgressPort",
-        "value": "15001"
-      }
+    }
     ]
   },
   "volumes": []
