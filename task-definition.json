@@ -62,29 +62,6 @@
       "systemControls": null,
       "privileged": null,
       "name": "main"
-    },
-    {
-      "name" : "envoy",
-
-      "essential" : true,
-      "environment" : [
-        {
-          "name" : "APPMESH_VIRTUAL_NODE_NAME",
-          "value" : "mesh/apps/virtualNode/serviceB"
-        }
-      ],
-      "healthCheck" : {
-        "command" : [
-          "CMD-SHELL",
-          "curl -s http://localhost:9901/server_info | grep state | grep -q LIVE"
-        ],
-        "interval" : 5,
-        "retries" : 3,
-        "startPeriod" : 10,
-        "timeout" : 2
-      },
-      "memory" : "500",
-      "user" : "1337"
     }
   ],
   "placementConstraints": [],
@@ -99,17 +76,6 @@
   "cpu": "256",
   "inferenceAccelerators": null,
   "proxyConfiguration": {
-    "type": "APPMESH",
-    "containerName": "envoy",
-    "properties": [{
-      "name": "ProxyIngressPort",
-      "value": "15000"
-    },
-      {
-        "name": "",
-        "value": ""
-      }
-    ]
   },
   "volumes": []
 }
