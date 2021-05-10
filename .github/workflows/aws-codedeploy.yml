@@ -22,6 +22,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
         role-skip-session-tagging: false
+        role-to-assume: SpinnakerManaged
 
     - name: Login to Amazon ECR
       id: login-ecr
