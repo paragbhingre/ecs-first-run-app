@@ -70,7 +70,7 @@
       "environment" : [
         {
           "name" : "APPMESH_VIRTUAL_NODE_NAME",
-          "value" : "mesh/apps/virtualNode/serviceB"
+          "value" : ""
         }
       ],
       "healthCheck" : {
