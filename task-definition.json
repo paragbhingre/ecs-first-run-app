@@ -29,7 +29,12 @@
       ],
       "linuxParameters": null,
       "cpu": 256,
-      "environment": [],
+      "environment": [
+        {
+          "name" : "APPMESH_VIRTUAL_NODE_NAME",
+          "value" : ""
+        }
+      ],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
@@ -105,9 +110,25 @@
     "type": "APPMESH",
     "containerName": "envoy",
     "properties": [{
-      "name": "",
-      "value": ""
-    }
+      "name": "IgnoredUID",
+      "value": "1337"
+    },
+      {
+        "name": "ProxyIngressPort",
+        "value": "15000"
+      },
+      {
+        "name": "ProxyEgressPort",
+        "value": "15001"
+      },
+      {
+        "name": "AppPorts",
+        "value": "9080"
+      },
+      {
+        "name": "EgressIgnoredIPs",
+        "value": "169.254.170.2,169.254.169.254"
+      }
     ]
   },
   "volumes": []
