@@ -50,7 +50,7 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition with CodeDeploy
-      uses: paragbhingre/amazon-ecs-deploy-task-definition@forceNewDeploymentIssueFinal
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: aws-prod-appmesh
