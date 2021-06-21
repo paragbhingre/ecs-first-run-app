@@ -26,6 +26,10 @@
         {
           "name" : "APPMESH_VIRTUAL_NODE_NAME",
           "value" : ""
+        },
+        {
+          "name" : "region",
+          "value": "us-west-2"
         }
       ],
       "resourceRequirements": null,
