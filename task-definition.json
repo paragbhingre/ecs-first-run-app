@@ -24,7 +24,7 @@
       "cpu": 256,
       "environment": [
         {
-          "name" : "APPMESH_VIRTUAL_NODE_NAME",
+          "name" : "testEnv",
           "value" : ""
         },
         {
