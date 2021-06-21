@@ -5,13 +5,6 @@
     {
       "dnsSearchDomains": null,
       "logConfiguration": {
-        "logDriver": "awslogs",
-        "secretOptions": null,
-        "options": {
-          "awslogs-group": "/ecs/first-run-task-definition",
-          "awslogs-region": "us-east-2",
-          "awslogs-stream-prefix": "ecs"
-        }
       },
       "entryPoint": [
         "sh",
