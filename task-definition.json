@@ -24,7 +24,7 @@
       "cpu": 256,
       "environment": [
         {
-          "name" : "testEnv",
+          "name" : "testEn",
           "value" : ""
         },
         {
