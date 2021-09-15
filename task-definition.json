@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::131296546870:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::910995322324:role/SpinnakerManaged",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -41,14 +41,17 @@
       "memoryReservation": 512,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "httpd:2.4",
+      "image": "",
       "startTimeout": null,
       "firelensConfiguration": null,
-      "dependsOn": null,
+      "essential": true,
+      "dependsOn": [{
+        "containerName": "envoy",
+        "condition": "HEALTHY"
+      }],
       "disableNetworking": null,
       "interactive": null,
       "healthCheck": null,
-      "essential": true,
       "links": [],
       "hostname": null,
       "extraHosts": null,
@@ -58,7 +61,30 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "sample-app"
+      "name": "main"
+    },
+    {
+      "name" : "envoy",
+      "image" : "840364872350.dkr.ecr.us-west-2.amazonaws.com/aws-appmesh-envoy:v1.16.1.0-prod",
+      "essential" : true,
+      "environment" : [
+        {
+          "name" : "APPMESH_VIRTUAL_NODE_NAME",
+          "value" : "mesh/apps/virtualNode/serviceB"
+        }
+      ],
+      "healthCheck" : {
+        "command" : [
+          "CMD-SHELL",
+          "curl -s http://localhost:9901/server_info | grep state | grep -q LIVE"
+        ],
+        "interval" : 5,
+        "retries" : 3,
+        "startPeriod" : 10,
+        "timeout" : 2
+      },
+      "memory" : "500",
+      "user" : "1337"
     }
   ],
   "placementConstraints": [],
@@ -72,6 +98,14 @@
   "networkMode": "awsvpc",
   "cpu": "256",
   "inferenceAccelerators": null,
-  "proxyConfiguration": null,
+  "proxyConfiguration": {
+    "type": "APPMESH",
+    "containerName": "envoy",
+    "properties": [{
+      "name": "",
+      "value": ""
+    }
+    ]
+  },
   "volumes": []
 }
