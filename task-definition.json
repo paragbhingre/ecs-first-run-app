@@ -25,10 +25,6 @@
         {
           "name" : "testEn",
           "value" : ""
-        },
-        {
-          "name" : "region",
-          "value": "us-west-2"
         }
       ],
       "resourceRequirements": null,
