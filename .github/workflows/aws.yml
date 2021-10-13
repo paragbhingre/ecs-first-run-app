@@ -45,7 +45,7 @@ jobs:
       uses: paragbhingre/configure-aws-credentials@OIDC
       with:
         aws-region: us-west-2
-        role-to-assume: arn:aws:iam::910995322324:role/SpinnakerManaged
+        role-to-assume: arn:aws:iam::910995322324:role/OIDC-Role-115NL7BHAX176
 
     - name: Login to Amazon ECR
       id: login-ecr
