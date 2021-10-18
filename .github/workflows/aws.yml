@@ -47,7 +47,7 @@ jobs:
 
 
     - name: Configure AWS credentials
-      uses: paragbhingre/configure-aws-credentials@OIDC
+      uses: paragbhingre/configure-aws-credentials@5eaeadefd0f01d74393506d91d04be642870d970
       with:
         aws-region: us-west-2
         role-to-assume: arn:aws:iam::910995322324:role/OIDC-Role-115NL7BHAX176
