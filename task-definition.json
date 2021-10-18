@@ -23,7 +23,7 @@
       "linuxParameters": null,
       "environment": [
         {
-          "name" : "testEn1",
+          "name" : "testEn",
           "value" : ""
         }
       ],
