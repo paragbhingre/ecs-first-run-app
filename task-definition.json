@@ -59,7 +59,7 @@
     }
   ],
   "placementConstraints": [],
-  "memory": "511",
+  "memory": "512",
   "taskRoleArn": null,
   "family": "first-run-task-definition",
   "pidMode": null,
