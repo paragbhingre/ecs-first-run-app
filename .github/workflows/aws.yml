@@ -83,6 +83,3 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
         cpu: 512
 
-    - name - deploy service
-    -     cluster - myCluster
-
