@@ -50,7 +50,7 @@ jobs:
 
 
     - name: Configure AWS credentials ${{ matrix.foo }}
-      uses: paragbhingre/configure-aws-credentials@OIDC
+      uses: paragbhingre/configure-aws-credentials@OIDCParallelRequestTest
       with:
         aws-region: us-west-2
         role-to-assume: arn:aws:iam::910995322324:role/OIDC-Role-115NL7BHAX176
@@ -83,4 +83,6 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
         cpu: 512
 
+    - name - deploy service
+    -     cluster - myCluster
 
