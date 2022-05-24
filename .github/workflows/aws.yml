@@ -47,6 +47,9 @@ jobs:
       with:
         aws-region: us-west-2
         role-to-assume: arn:aws:iam::910995322324:role/OIDC-Role-115NL7BHAX176
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 
     - name: Login to Amazon ECR
       id: login-ecr
