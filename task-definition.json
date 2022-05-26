@@ -1,17 +1,10 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::131296546870:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::910995322324:role/SpinnakerManaged",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
       "logConfiguration": {
-        "logDriver": "awslogs",
-        "secretOptions": null,
-        "options": {
-          "awslogs-group": "/ecs/first-run-task-definition",
-          "awslogs-region": "us-east-2",
-          "awslogs-stream-prefix": "ecs"
-        }
       },
       "entryPoint": [
         "sh",
@@ -20,7 +13,7 @@
       "portMappings": [
         {
           "hostPort": 80,
-          "protocol": "tcp",
+          "protocol": "udp",
           "containerPort": 80
         }
       ],
@@ -28,8 +21,16 @@
         "/bin/sh -c \"echo '<html> <head> <title>Amazon ECS Sample App</title> <style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now running on a container in Amazon ECS.</p> </div></body></html>' >  /usr/local/apache2/htdocs/index.html && httpd-foreground\""
       ],
       "linuxParameters": null,
-      "cpu": 256,
-      "environment": [],
+      "environment": [
+        {
+          "name" : "testEn1",
+          "value" : ""
+        },
+        {
+          "name" : "testEn2",
+          "value" : "testEn2"
+        }
+      ],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
@@ -41,14 +42,14 @@
       "memoryReservation": 512,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "httpd:2.4",
+      "image": "",
       "startTimeout": null,
       "firelensConfiguration": null,
-      "dependsOn": null,
+      "essential": true,
+      "dependsOn": [],
       "disableNetworking": null,
       "interactive": null,
       "healthCheck": null,
-      "essential": true,
       "links": [],
       "hostname": null,
       "extraHosts": null,
@@ -58,7 +59,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "sample-app"
+      "name": "main"
     }
   ],
   "placementConstraints": [],
@@ -72,6 +73,7 @@
   "networkMode": "awsvpc",
   "cpu": "256",
   "inferenceAccelerators": null,
-  "proxyConfiguration": null,
+  "proxyConfiguration": {
+  },
   "volumes": []
 }
