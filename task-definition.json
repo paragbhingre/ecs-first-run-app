@@ -25,6 +25,10 @@
         {
           "name" : "testEn1",
           "value" : ""
+        },
+        {
+          "name" : "testEn2",
+          "value" : "testEn2"
         }
       ],
       "resourceRequirements": null,
